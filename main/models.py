@@ -6,7 +6,9 @@ class Person(models.Model):
     full_name = models.CharField(max_length=500)
     phone_number = PhoneNumberField(region="UZ")
     passport = models.CharField(max_length=20)
-    address = models.TextField()
+    address = models.TextField(null=True, blank=True)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
 
     def __str__(self):
         return self.full_name

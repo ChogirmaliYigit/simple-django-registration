@@ -9,6 +9,8 @@
 		<link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
 		<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+		{% block extra_styles %} {% endblock extra_styles %}
+
 		<title>{% block title %} {% endblock title %}</title>
 	</head>
 
@@ -17,5 +19,7 @@
 
 		<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+
+		{% block extra_scripts %} {% endblock extra_scripts %}
 	</body>
 </html>
