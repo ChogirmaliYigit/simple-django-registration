@@ -6,9 +6,6 @@ def index(request):
     template_name = "main/index.html"
 
     if request.method == "POST":
-        print(request.FILES)
-        print(request.POST)
-
         full_name = request.POST.get("full_name", "")
         phone_number = request.POST.get("phone_number", "")
         passport = request.POST.get("passport", "")
