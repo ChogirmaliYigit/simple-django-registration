@@ -9,6 +9,8 @@ class Person(models.Model):
     address = models.TextField(null=True, blank=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
+    passport_image = models.ImageField(upload_to="passport_images/")
+    kadastr_image = models.ImageField(upload_to="kadastr_images/")
 
     def __str__(self):
         return self.full_name
