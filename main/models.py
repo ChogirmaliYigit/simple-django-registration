@@ -14,7 +14,7 @@ class Person(models.Model):
     address = models.TextField(blank=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
-    passport_image = models.ForeignKey(PassportImage, on_delete=models.CASCADE)
+    passport_image = models.ForeignKey(PassportImage, on_delete=models.PROTECT)
     kadastr_image = models.ImageField(upload_to="kadastr_images/")
 
     def __str__(self):
@@ -41,8 +41,8 @@ class SubscriptionPlan(models.Model):
 
 
 class SubscriptionPlanUser(models.Model):
-    user = models.ForeignKey(Person, on_delete=models.CASCADE)
-    plan = models.ForeignKey(SubscriptionPlan, on_delete=models.CASCADE)
+    user = models.ForeignKey(Person, on_delete=models.PROTECT)
+    plan = models.ForeignKey(SubscriptionPlan, on_delete=models.PROTECT)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
