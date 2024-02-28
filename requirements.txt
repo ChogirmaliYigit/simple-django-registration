@@ -3,3 +3,4 @@ django-phonenumber-field==7.3.0
 phonenumbers==8.13.30
 django-unfold==0.20.4
 pillow==10.2.0
+UzTransliterator==0.0.36

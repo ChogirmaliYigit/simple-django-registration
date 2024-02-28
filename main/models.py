@@ -10,6 +10,7 @@ class Person(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     passport_image = models.ImageField(upload_to="passport_images/")
+    passport_secondary_image = models.ImageField(upload_to="passport_images/")
     kadastr_image = models.ImageField(upload_to="kadastr_images/")
 
     def __str__(self):

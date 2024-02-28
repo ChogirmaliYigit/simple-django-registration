@@ -14,6 +14,7 @@ class PersonAdmin(ModelAdmin):
         "latitude",
         "longitude",
         "passport_image",
+        "passport_secondary_image",
         "kadastr_image",
     )
     search_fields = fields + ("id",)

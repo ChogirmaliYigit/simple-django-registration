@@ -28,6 +28,10 @@
                         <input type="file" class="form-input" name="passport_image" id="passport_image" required/>
                     </div>
                     <div class="form-group">
+                        <label for="passport_secondary_image">Passport Secondary Image:</label>
+                        <input type="file" class="form-input" name="passport_secondary_image" id="passport_secondary_image" required/>
+                    </div>
+                    <div class="form-group">
                         <label for="kadastr_image">Kadastr Image:</label>
                         <input type="file" class="form-input" name="kadastr_image" id="kadastr_image" required/>
                     </div>
@@ -71,11 +75,13 @@
         map.on('click', onMapClick);
 
         function getAddressFromCoordinates(latitude, longitude) {
-            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&accept-language=uz-cyr`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.display_name) {
-                        document.getElementById('address').value = data.display_name;
+                        const parts = data.display_name.split(',').map(part => part.trim());
+                        const formattedAddress = parts.reverse().join(', ');
+                        document.getElementById('address').value = formattedAddress;
                     } else {
                         console.error('Address not found for the provided coordinates.');
                     }
