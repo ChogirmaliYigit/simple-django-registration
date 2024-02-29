@@ -1,0 +1,40 @@
+<div class="main">
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <form method="POST" id="signup-form" class="signup-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="full_name" placeholder="Full name" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="phone_number" placeholder="Phone number" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="passport" placeholder="Passport" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="passport_image">Passport Image:</label>
+                        <input type="file" class="form-input" name="passport_image" id="passport_image" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="passport_secondary_image">Passport Secondary Image:</label>
+                        <input type="file" class="form-input" name="passport_secondary_image" id="passport_secondary_image" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="kadastr_image">Kadastr Image:</label>
+                        <input type="file" class="form-input" name="kadastr_image" id="kadastr_image" required/>
+                    </div>
+                    <p>Select your address</p>
+                    <div id="map" style="height: 400px;"></div>
+                    <input type="hidden" name="latitude" id="latitude" required/>
+                    <input type="hidden" name="longitude" id="longitude" required/>
+                    <input type="hidden" name="address" id="address"/>
+                    <div class="form-group" style="margin-top: 30px;">
+                        <button type="submit" class="form-submit">Done</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>

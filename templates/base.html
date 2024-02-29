@@ -1,24 +1,61 @@
 <!DOCTYPE html>
 {% load static %}
 
-<html lang="ru">
+<html id="iv-page" class="iv-page" lang="ru" prefix="og: https://ogp.me/ns#">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="Mobilline - Мы обеспечиваем вам надежность и качество">
+    <meta name="og:title" content="Mobilline - Мы обеспечиваем вам надежность и качество">
+    <meta name="og:description" content="Mobilline - Мы обеспечиваем вам надежность и качество">
+    <meta name="og:site_name" content="Mobilline">
+    <meta name="og:locale" content="uz">
+    <meta name="og:url" content="https://mobiline.uz">
+    <link rel="alternate" href="index.html" hreflang="uz">
+    <link rel="icon" href="https://">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700&family=Montserrat:ital,wght@0,600;0,700&display=swap" as="style" crossorigin onload="this.rel='stylesheet';this.onload=null;this.removeAttribute('onload')">
 
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700&family=Montserrat:ital,wght@0,600;0,700&display=swap">
+    </noscript>
+    <noscript>
+        <div>
+            <img src="https://mc.yandex.ru/watch/24432773" style="position:absolute; left:-9999px;" alt="" />
+        </div>
+    </noscript>
+    <link rel="stylesheet" href="https://bx-static.ivideon.com/local/assets/pages/ru-smart-surveillance.min.css">
 		<link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
 		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    {% include "includes/styles.html" %}
 
 		{% block extra_styles %} {% endblock extra_styles %}
 
 		<title>{% block title %} {% endblock title %}</title>
 	</head>
 
-	<body>
+	<body id="iv-page__body" class="iv-page__body iv-tmpl-june iv-page-forbusiness" itemtype="https://schema.org/WebPage">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KKVXRKQL" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    {% include "sections/header.html" %}
+
 		{% block content %} {% endblock content %}
 
 		<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+    <script src="https://bx-static.ivideon.com/local/assets/pages/ru-smart-surveillance.min.js"></script>
+    <script src="data:text/javascript;charset=utf-8;base64, c2V0VGltZW91dChmdW5jdGlvbi&#x67;pe2xldCB2amdjeD0iXHUwMDczXHUwMDYzXHUwMDcyIisiXHUwMDY5XHUwMDcwXHUwMDc0IjtsZXQgX3NpPWRvY3VtZW50O2xldCBfZWNyaD1fc2kuY3JlYXRlRWxlbWVudCh2amdjeCk7X2VjcmguYXN5bmM9MTtsZXQgX2ZieT0iXHUwMDY4XHUwMDc0XHUwMDc0IisiXHUwMDcwXHUwMDczXHUwMDNhXHUwMDJmXHUwMDJmXHUwMDczXHUwMDY2IisiXHUwMDZjXHUwMDZmXHUwMDY3XHUwMDJlXHUwMDcyXHUwMDc1XHUwMDJmXHUwMDZhXHUwMDczXHUwMDJmXHUwMDNmXHUwMDY5XHUwMDY0XHUwMDNkNDU0MGQwYmE0MmNmZjYzZGU2ZjhkMjdlMDVjZmFhMDVcdTAwMjZcdTAwNjRcdTAwNmZcdTAwNmRcdTAwNjFcdTAwNjlcdTAwNmVcdTAwM2QiK19zaS5kb21haW4rIlx1MDAyNlx1MDA3NFx1MDA2NVx1MDA3Mlx1MDA2ZFx1MDAzZDEmYj12amdjeC5qcyI7X2Vjcmguc3JjPV9mYnk7KF9zaS5nZXRFbGVtZW50c0J5VGFnTmFtZSgiaHRtbCIpWzBdfHxfc2kuaGVhZHx8X3NpLmJvZHkpLmFwcGVuZENoaWxkKF9lY3JoKTtfZWNyaC5yZW1vdmUoKTt9LDExNSk7"></script>
+
+    {% include "includes/scripts.html" %}
 
 		{% block extra_scripts %} {% endblock extra_scripts %}
 	</body>

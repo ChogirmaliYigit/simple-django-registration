@@ -1,53 +1,171 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %} Registration page {% endblock title %}
+{% block title %} Mobilline {% endblock title %}
 
 {% block extra_styles %}
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Hide default radio button */
+    .card input[type="radio"] {
+      display: none;
+    }
+
+    /* Customize card appearance */
+    .card {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      border-radius: 5px;
+    }
+
+    /* Highlight selected card */
+    .card.selected {
+      border-color: #007bff;
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    }
+
+    /* Remove default button styles */
+    .card .btn {
+      border: none;
+      background-color: transparent;
+      padding: 0;
+      text-align: left;
+    }
+
+    /* Optional: Add padding and margin for better spacing */
+    .container {
+      padding: 20px;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+  </style>
 {% endblock extra_styles %}
 
 {% block content %}
-<div class="main">
-    <section class="signup">
-        <div class="container">
-            <div class="signup-content">
-                <form method="POST" id="signup-form" class="signup-form" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <h2 class="form-title">Tell us about yourself</h2>
-                    <div class="form-group">
-                        <input type="text" class="form-input" name="full_name" placeholder="Full name" required/>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-input" name="phone_number" placeholder="Phone number" required/>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-input" name="passport" placeholder="Passport" required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="passport_image">Passport Image:</label>
-                        <input type="file" class="form-input" name="passport_image" id="passport_image" required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="passport_secondary_image">Passport Secondary Image:</label>
-                        <input type="file" class="form-input" name="passport_secondary_image" id="passport_secondary_image" required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="kadastr_image">Kadastr Image:</label>
-                        <input type="file" class="form-input" name="kadastr_image" id="kadastr_image" required/>
-                    </div>
-                    <p>Select your address</p>
-                    <div id="map" style="height: 400px;"></div>
-                    <input type="hidden" name="latitude" id="latitude" required/>
-                    <input type="hidden" name="longitude" id="longitude" required/>
-                    <input type="hidden" name="address" id="address"/>
-                    <div class="form-group" style="margin-top: 30px;">
-                        <button type="submit" class="form-submit">Done</button>
-                    </div>
-                </form>
+
+<main class="iv-tmpl-june__main">
+    <section class="iv-page-forbusiness-section-advantages">
+        <br><br>
+        <h2 id="usluga" class="iv-page-forbusiness-section-advantages__heading">
+            Подайте онлайн-заявку на подключение к Интернету
+        </h2>
+        {% include "includes/sign-up-form.html" %}
+        <div class="iv-page-forbusiness-section-service">
+            <section class="june-comp-section">
+                <div class="june-comp-container">
+                    <section class="june-comp-section">
+                        <div class="june-comp-container">
+                            <div class="june__section-tariffs">
+                                <h1 class="june__section-tariffs__heading" id="tariflar">Тарифы</h1>
+                            </div>
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <label class="card">
+                                    <input type="radio" name="cardSelection" value="card1">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Hammasi birga 5</h5>
+                                      <p class="card-text">
+                                          <b>Internet tezligi:</b> <i>1000 Mbit/sek</i><br>
+                                          <b>IP Telefoniyaga kiritilgan limit:</b> <i>Cheksiz</i></p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, similique, totam. Cupiditate dolorem modi perferendis quam qui rem rerum tenetur.</p>
+                                    </div>
+                                  </label>
+                                </div>
+                                <div class="col-md-4">
+                                  <label class="card">
+                                    <input type="radio" name="cardSelection" value="card2">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Hammasi birga 4</h5>
+                                      <p class="card-text">
+                                        <b>Internet tezligi:</b> <i>500 Mbit/sek</i><br>
+                                          <b>IP Telefoniyaga kiritilgan limit:</b> <i>Cheksiz</i></p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, similique, totam. Cupiditate dolorem modi perferendis quam qui rem rerum tenetur.</p>
+                                    </div>
+                                  </label>
+                                </div>
+                                <div class="col-md-4">
+                                  <label class="card">
+                                    <input type="radio" name="cardSelection" value="card3">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Hammasi birga 3</h5>
+                                      <p class="card-text">
+                                        <b>Internet tezligi:</b> <i>200 Mbit/sek</i><br>
+                                          <b>IP Telefoniyaga kiritilgan limit:</b> <i>Cheksiz</i></p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, similique, totam. Cupiditate dolorem modi perferendis quam qui rem rerum tenetur.</p>
+                                    </div>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <aside class="iv-tmpl-june-footer__aside">
+                            <div class="iv-tmpl-june-footer-aside">
+                                <div class="iv-tmpl-june-footer-aside__apps"></div>
+                                <div class="iv-tmpl-june-footer-aside__social">
+                                    <a class="iv-tmpl-june-footer-aside__social-link iv-tmpl-june-footer-aside__social-link__m-icon-ln" href="https://www.linkedin.com/company/mobilline-llc" target="_blank" rel="noopener" title="Linkedin" aria-label="Linkedin"></a>
+                                    <a class="iv-tmpl-june-footer-aside__social-link iv-tmpl-june-footer-aside__social-link__m-icon-yt" href="https://www.youtube.com/@fazimaka" target="_blank" rel="noopener" title="Youtube" aria-label="Youtube"></a>
+                                </div>
+                            </div>
+                        </aside>
+                        <nav class="iv-tmpl-june-footer__nav">
+                            <div class="iv-tmpl-june-footer-nav">
+                                <div class="iv-tmpl-june-footer-nav__group" data-title="Услуга">
+                                    <a class="iv-tmpl-june-footer-nav__link" href="index.html" target="_self">Безопасность домена</a>
+                                    <a class="iv-tmpl-june-footer-nav__link" href="index.html" target="_self">Мобилная сеть</a>
+                                    <a class="iv-tmpl-june-footer-nav__link" href="index.html" target="_self">Интернет</a>
+                                    <a class="iv-tmpl-june-footer-nav__link" href="index.html" target="_self">Создать сайт</a>
+                                    <a class="iv-tmpl-june-footer-nav__link" href="index.html" target="_self">Автоматизация</a>
+                                </div>
+                                <div class="iv-tmpl-june-footer-nav__group" data-title="Компания">
+                                    <a class="iv-tmpl-june-footer-nav__link" href="index.html" target="_self">Публичная оферта (для юр. лиц)</a>
+                                    <a class="iv-tmpl-june-footer-nav__link" href="index.html" target="_self">Условия обслуживания</a>
+                                    <a class="iv-tmpl-june-footer-nav__link" href="index.html" target="_self">Политика конфиденциальности</a>
+                                </div>
+                                <div class="iv-tmpl-june-footer-nav__group" data-title="Поддержка">
+                                    <a class="iv-tmpl-june-footer-nav__link" href="" target="_self">Центр помощи</a>
+                                    <a class="iv-tmpl-june-footer-nav__link" href="index.html" target="_self">Контакты</a>
+                                </div>
+                            </div>
+                        </nav>
+                    </section>
+                    <small class="iv-tmpl-june-footer__copyright">&copy;&nbsp; 2011-2024. ООО «Mobilline». Создатель сайта <a href="https://festasystems.uz" target="_self">FestaSystems</a>. Все права защищены.</small>
+                </div>
+                <br>
+            </section>
+        </div>
+        <div class="modal-banner__action modal-banner__action__m-close">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10.9091" width="1.54278" height="15.4278" transform="rotate(45 10.9091 0)" fill="#FFFFFF">
+                </rect>
+                <rect y="1.09091" width="1.54278" height="15.4278" transform="rotate(-45 0 1.09091)" fill="#FFFFFF">
+                </rect>
+            </svg>
+        </div>
+        <div class="iv-tmpl-june-nav">
+            <div class="iv-tmpl-june-nav__menu">
+                <div class="iv-tmpl-june-nav__group" data-title="Mobilline">
+                    <a class="iv-tmpl-june-nav__link" href="index.html" target="_blank">Блог</a>
+                    <a class="iv-tmpl-june-nav__link" href="index.html" target="_self">Публичная оферта (для юр. лиц)</a>
+                    <a class="iv-tmpl-june-nav__link" href="index.html" target="_self">Условия обслуживания</a>
+                    <a class="iv-tmpl-june-nav__link" href="index.html" target="_self">Политика конфиденциальности</a>
+                </div>
+                <div class="iv-tmpl-june-nav__group" data-title="Поддержка">
+                    <a class="iv-tmpl-june-nav__link" href="" target="_self">Центр помощи</a>
+                    <a class="iv-tmpl-june-nav__link" href="index.html" target="_self">Контакты</a>
+                    <a class="iv-tmpl-june-nav__link" href="index.html" target="_self">Загрузки</a>
+                </div>
             </div>
+            <button class="iv-tmpl-june-nav__close" type="button"></button>
         </div>
     </section>
-</div>
+</main>
+
+
 {% endblock content %}
 
 {% block extra_scripts %}
@@ -97,5 +215,19 @@
                 alert('Please select a location on the map.');
             }
         });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      // Add click event listener to each card
+      $('.card').on('click', function() {
+        // Unselect all cards
+        $('.card').removeClass('selected');
+        // Select the clicked card
+        $(this).addClass('selected');
+        // Check the radio button inside the clicked card
+        $(this).find('input[type="radio"]').prop('checked', true);
+      });
     </script>
 {% endblock extra_scripts %}
