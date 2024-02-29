@@ -1,16 +1,26 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
+class PassportImage(models.Model):
+    front_image = models.ImageField(upload_to="passport_images/")
+    back_image = models.ImageField(upload_to="passport_images/")
+
+    def __str__(self):
+        return f"Passport rasmlari {str(self.pk)}"
+    class Meta:
+        db_table = "passportImage"
+        verbose_name = "Ro'yxatga yozilgan shaxs passport rasmlari"
+        verbose_name_plural = "Ro'yxatga yozilgan shaxslar passport rasmlari"
+
 
 class Person(models.Model):
     full_name = models.CharField(max_length=500)
     phone_number = PhoneNumberField(region="UZ")
     passport = models.CharField(max_length=20)
-    address = models.TextField(null=True, blank=True)
+    address = models.TextField(blank=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
-    passport_image = models.ImageField(upload_to="passport_images/")
-    passport_secondary_image = models.ImageField(upload_to="passport_images/")
+    passport_image = models.ForeignKey(PassportImage, on_delete=models.CASCADE)
     kadastr_image = models.ImageField(upload_to="kadastr_images/")
 
     def __str__(self):
@@ -24,8 +34,8 @@ class Person(models.Model):
 
 class SubscriptionPlan(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField(null=True, blank=True)
-    price = models.DecimalField(max_digits=20, decimal_places=2)
+    description = models.TextField(blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return self.title
