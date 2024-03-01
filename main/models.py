@@ -12,6 +12,7 @@ class Person(models.Model):
     passport_image = models.ImageField(upload_to="passport_images/")
     passport_secondary_image = models.ImageField(upload_to="passport_images/")
     kadastr_image = models.ImageField(upload_to="kadastr_images/")
+    house_number = models.CharField(max_length=10)
 
     def __str__(self):
         return self.full_name

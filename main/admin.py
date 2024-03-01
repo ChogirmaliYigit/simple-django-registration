@@ -16,6 +16,7 @@ class PersonAdmin(ModelAdmin):
         "passport_image",
         "passport_secondary_image",
         "kadastr_image",
+        "house_number",
     )
     search_fields = fields + ("id",)
     list_filter_submit = True

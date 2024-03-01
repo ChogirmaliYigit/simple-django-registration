@@ -1,8 +1,5 @@
 from django.shortcuts import render
 from main.models import Person
-from UzTransliterator import UzTransliterator
-
-obj = UzTransliterator.UzTransliterator()
 
 
 def index(request):
@@ -17,9 +14,8 @@ def index(request):
         passport_image = request.FILES.get("passport_image")
         passport_secondary_image = request.FILES.get("passport_secondary_image")
         kadastr_image = request.FILES.get("kadastr_image")
-
+        house_number = request.POST.get("house_number")
         address = request.POST.get("address", "")
-        # address = obj.transliterate(address, from_="lat", to="cyr")
 
         Person.objects.create(
             full_name=full_name,
