@@ -1,14 +1,12 @@
 from django.shortcuts import render
 from main.models import Person, PassportImage
-from UzTransliterator import UzTransliterator
-obj = UzTransliterator.UzTransliterator()
+
 
 def index(request):
     template_name = "main/index.html"
     if request.method == "POST":
         data = request.POST
         
-        # address = obj.transliterate(address, from_="lat", to="cyr") ?
          
         passport_image = PassportImage.objects.create(
             front_image=request.FILES.get("front_image"),
@@ -25,7 +23,6 @@ def index(request):
             kadastr_image=request.FILES.get("kadastr_image")
         )
         template_name = "main/done.html"
-        return render(request, template_name)
     
     else:
         return render(request, template_name)
