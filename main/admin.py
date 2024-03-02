@@ -1,6 +1,6 @@
 from django.contrib import admin
 from unfold.admin import ModelAdmin
-from main.models import Person, SubscriptionPlan, SubscriptionPlanUser
+from main.models import Person, PassportImage, SubscriptionPlan, SubscriptionPlanUser
 
 
 @admin.register(Person)
@@ -14,10 +14,17 @@ class PersonAdmin(ModelAdmin):
         "latitude",
         "longitude",
         "passport_image",
-        "passport_secondary_image",
         "kadastr_image",
         "house_number",
     )
+    search_fields = fields + ("id",)
+    list_filter_submit = True
+
+
+@admin.register(PassportImage)
+class PassportImageAdmin(ModelAdmin):
+    list_display = ("front_image", "back_image",)
+    fields = list_display
     search_fields = fields + ("id",)
     list_filter_submit = True
 

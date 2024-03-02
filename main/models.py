@@ -9,8 +9,7 @@ class Person(models.Model):
     address = models.TextField(null=True, blank=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
-    passport_image = models.ImageField(upload_to="passport_images/")
-    passport_secondary_image = models.ImageField(upload_to="passport_images/")
+    passport_image = models.ForeignKey("main.PassportImage", on_delete=models.CASCADE, related_name="user")
     kadastr_image = models.ImageField(upload_to="kadastr_images/")
     house_number = models.CharField(max_length=10)
 
@@ -23,10 +22,23 @@ class Person(models.Model):
         verbose_name_plural = "Ro'yxatga yozilgan shaxslar"
 
 
+class PassportImage(models.Model):
+    front_image = models.ImageField(upload_to="passport_images/front/")
+    back_image = models.ImageField(upload_to="passport_images/back/")
+
+    def __str__(self):
+        return f"{self.user.full_name} ning passport rasmlari {self.pk}"
+
+    class Meta:
+        db_table = "passportImage"
+        verbose_name = "Ro'yxatga yozilgan shaxs passport rasmlari"
+        verbose_name_plural = "Ro'yxatga yozilgan shaxslar passport rasmlari"
+
+
 class SubscriptionPlan(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    price = models.DecimalField(max_digits=20, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return self.title
