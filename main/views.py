@@ -37,21 +37,21 @@ def index(request):
             errors.append("House number is not valid! Please enter only digits.")
 
         if not errors:
-            passport_image = PassportImage.objects.create(
-                front_image=front_image,
-                back_image=back_image,
-            )
-
-            Person.objects.create(
+            person = Person.objects.create(
                 full_name=full_name,
                 phone_number=phone_number,
                 passport=passport,
                 address=address,
                 latitude=latitude,
                 longitude=longitude,
-                passport_image=passport_image,
                 kadastr_image=kadastr_image,
                 house_number=house_number,
+            )
+
+            PassportImage.objects.create(
+                front_image=front_image,
+                back_image=back_image,
+                person=person,
             )
 
             template_name = "main/done.html"

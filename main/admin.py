@@ -13,7 +13,6 @@ class PersonAdmin(ModelAdmin):
         "address",
         "latitude",
         "longitude",
-        "passport_image",
         "kadastr_image",
         "house_number",
     )
@@ -23,7 +22,7 @@ class PersonAdmin(ModelAdmin):
 
 @admin.register(PassportImage)
 class PassportImageAdmin(ModelAdmin):
-    list_display = ("front_image", "back_image",)
+    list_display = ("person", "front_image", "back_image",)
     fields = list_display
     search_fields = fields + ("id",)
     list_filter_submit = True
