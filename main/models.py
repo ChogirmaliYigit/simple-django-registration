@@ -5,7 +5,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Person(models.Model):
     full_name = models.CharField(max_length=500)
     phone_number = PhoneNumberField(region="UZ")
-    passport = models.CharField(max_length=20)
+    passport = models.CharField(max_length=20, null=True)
     address = models.TextField(null=True, blank=True)
     latitude = models.FloatField()
     longitude = models.FloatField()

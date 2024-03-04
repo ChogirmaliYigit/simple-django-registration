@@ -1,4 +1,5 @@
 import re
+import easyocr
 
 from django.shortcuts import render
 from main.models import Person, PassportImage
@@ -13,7 +14,6 @@ def index(request):
     if request.method == "POST":
         full_name = data.get("full_name", "")
         phone_number = data.get("phone_number", "")
-        passport = data.get("passport", "")
         latitude = data.get("latitude")
         longitude = data.get("longitude")
         front_image = files.get("passport_image")
@@ -29,18 +29,24 @@ def index(request):
             errors.append("Phone number is not valid! Please enter the right format of your phone number: "
                           "+998XXXXXXXXX, +998-XX-XXX-XX-XX, +998 XX XXX XX XX")
 
-        if not re.match("^([A-Za-z])[0-9]{7}$", passport):
-            errors.append("Passport number and series is not valid! Please enter the right format of your passport: "
-                          "ABXXXXXXX, ACXXXXXXX, ADXXXXXXX")
-
         if not house_number.isdigit():
             errors.append("House number is not valid! Please enter only digits.")
+
+        if front_image:
+            reader = easyocr.Reader(['en'])
+            result = reader.readtext(front_image)
+            if result:
+                passport_seria_number = result[-1][-2][:9].upper()
+            else:
+                passport_seria_number = None
+        else:
+            passport_seria_number = None
 
         if not errors:
             person = Person.objects.create(
                 full_name=full_name,
                 phone_number=phone_number,
-                passport=passport,
+                passport=passport_seria_number,
                 address=address,
                 latitude=latitude,
                 longitude=longitude,
