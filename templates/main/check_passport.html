@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Registration page {% endblock title %}
+
+{% block content %}
+<div class="main">
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content" style="margin: 60px auto;">
+                <h3>Please check again your Passport Seria and Number</h3>
+                <form method="POST" id="signup-form" class="signup-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="passport" placeholder="Passport seria and number" required value="{{ data.passport }}"/>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="form-submit">Done</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}

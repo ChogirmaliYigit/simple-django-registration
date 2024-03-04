@@ -24,10 +24,7 @@ class Person(models.Model):
 class PassportImage(models.Model):
     front_image = models.ImageField(upload_to="passport_images/front/")
     back_image = models.ImageField(upload_to="passport_images/back/")
-    person: Person = models.ForeignKey("main.Person", on_delete=models.CASCADE, related_name="passport_images")
-
-    def __str__(self):
-        return f"{self.person.full_name} ning passport rasmlari {self.pk}"
+    person: Person = models.ForeignKey("main.Person", on_delete=models.CASCADE, related_name="passport_images", null=True)
 
     class Meta:
         db_table = "passportImage"
