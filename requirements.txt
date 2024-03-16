@@ -1,4 +1,4 @@
-django==5.0.2
+django>=4.2.9
 django-phonenumber-field==7.3.0
 phonenumbers==8.13.30
 django-unfold==0.20.4
